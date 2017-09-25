@@ -1,0 +1,107 @@
+package vun.zisplay.activity;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import vun.zisplay.R;
+import vun.zisplay.managers.LocalData;
+import vun.zisplay.models.AppUser;
+import vun.zisplay.models.Message;
+import vun.zisplay.network.OMGServices;
+import vun.zisplay.network.RestClient;
+import vun.zisplay.utils.AppConstants;
+import vun.zisplay.utils.ImageDownloader;
+
+public class UserProfile extends ActionBarActivity {
+
+    LocalData localData=null;
+    AppUser appUser=null;
+    OMGServices omgService=null;
+    ProgressDialog pgdlg=null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_profile);
+        Intent intent = getIntent();
+        String userId = intent.getStringExtra("userId");
+        omgService= RestClient.getInstance().getApiService();
+        localData = LocalData.getInstance();
+        if(userId==null)
+        {
+            userId=localData.getData("userId");
+        }
+        pgdlg = ProgressDialog.show(this, "Please Wait", "Loading user profile...", true);
+        loadUser(userId);
+    }
+
+    void loadUser(String userId)
+    {
+        System.out.println("user id " + userId);
+        String accessToken=localData.getData("accessToken");
+        omgService.getUser(userId,accessToken, new Callback<AppUser>() {
+            @Override
+            public void success(AppUser appUser, Response response) {
+                System.out.println("User response " + appUser);
+                final TextView userNameText = (TextView) findViewById(R.id.userName);
+                final TextView phoneText = (TextView) findViewById(R.id.userMobile);
+                final TextView cityText = (TextView) findViewById(R.id.userCity);
+                final ImageView imageView = (ImageView) findViewById(R.id.userImage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             );
+                final TextView nameText = (TextView) findViewById(R.id.name);
+                final TextView emailText = (TextView) findViewById(R.id.email);
+                nameText.setText(appUser.getName());
+                userNameText.setText(appUser.getUserName());
+                phoneText.setText(appUser.getMobileNo());
+                cityText.setText(appUser.getCity());
+                emailText.setText(appUser.getEmail());
+                ImageDownloader imgDownloder=new ImageDownloader();
+                System.out.println(AppConstants.CLOUDINARY_URL_FACEBOOK+"w_160,h_240,c_fill"+appUser.getFacebookId()+".jpg");
+                imgDownloder.download(AppConstants.CLOUDINARY_URL_FACEBOOK+"w_160,h_240,c_fill/"+appUser.getFacebookId()+".jpg",imageView);
+                if (pgdlg.isShowing())
+                    pgdlg.dismiss();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("error " + error.getMessage());
+                if (pgdlg.isShowing())
+                    pgdlg.dismiss();
+            }
+
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_user_profile, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}

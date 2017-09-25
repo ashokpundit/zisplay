@@ -1,0 +1,313 @@
+package vun.zisplay.activity;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.telephony.TelephonyManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import vun.zisplay.R;
+import vun.zisplay.managers.AnalyticsManager;
+import vun.zisplay.managers.LocalData;
+import vun.zisplay.managers.MixPanel;
+import vun.zisplay.models.Merchant;
+import vun.zisplay.network.OMGServices;
+import vun.zisplay.network.RestClient;
+
+public class UserRegistrationActivity extends ZisplayBaseActivity implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
+
+    OMGServices omgService= RestClient.getInstance().getApiService();
+    // Google Map
+    private GoogleMap googleMap;
+    GoogleApiClient mGoogleApiClient=null;
+    Location mLastLocation=null;
+    LocalData localData=null;
+    ProgressDialog pgdlg=null;
+//    OMGServices omgService=null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        analytics(this.getClass().getName());
+        setContentView(R.layout.activity_user_registration);
+        localData=LocalData.getInstance();
+
+        boolean merchantRegistered=localData.getBooleanData("registered");
+        if(merchantRegistered)
+        {
+            pgdlg = ProgressDialog.show(this, "Please Wait", "Loading data...", true);
+            loadMerchant();
+        }
+        AsyncTask task=new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] params) {
+                buildGoogleApiClient();
+                return null;
+            }
+        };
+
+        task.execute();
+
+    }
+
+    private void loadMerchant()
+    {
+        String merchantId=localData.getData("merchantId");
+        omgService.getMerchant(merchantId, new Callback<Merchant>() {
+            @Override
+            public void success(Merchant merchantObj, Response response) {
+                if (merchantObj != null) {
+                    loadMerchant(merchantObj);
+                    if (pgdlg.isShowing())
+                        pgdlg.dismiss();
+                }
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("error " + error.getMessage());
+                if (pgdlg.isShowing())
+                    pgdlg.dismiss();
+            }
+        });
+    }
+
+    private void loadMerchant(Merchant merchantObj)
+    {
+
+        EditText zisplayHandleText = (EditText) findViewById(R.id.zisplayHandle);
+        zisplayHandleText.setText(merchantObj.getName());
+        EditText merchantAddressText = (EditText) findViewById(R.id.merchantAddress);
+        merchantAddressText.setText(merchantObj.getAddress());
+
+        final EditText merchantLocalityText = (EditText) findViewById(R.id.merchantLocality);
+        merchantLocalityText.setText(merchantObj.getLocality());
+        final EditText merchantCityText = (EditText) findViewById(R.id.merchantCity);
+        merchantCityText.setText(merchantObj.getCity());
+        final EditText merchantStateText = (EditText) findViewById(R.id.merchantState);
+        merchantStateText.setText(merchantObj.getState());
+        final EditText merchantCountryText = (EditText) findViewById(R.id.merchantCountry);
+        merchantCountryText.setText(merchantObj.getCountry());
+        vun.zisplay.models.Location location=merchantObj.getLocation();
+        if(location!=null)// && !location.isEmpty())
+        {
+//            String[] locationAr = location.split(",");
+            final EditText merchantLongitude = (EditText) findViewById(R.id.merchantLangitude);
+            merchantLongitude.setText(location.getLng()+"");
+            final EditText merchantLatitude = (EditText) findViewById(R.id.merchantLatitude);
+            merchantLatitude.setText(location.getLat()+"");
+        }
+    }
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        try {
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        EditText latitude = (EditText) findViewById(R.id.merchantLatitude);
+        EditText longitude = (EditText) findViewById(R.id.merchantLangitude);
+        latitude.setText(String.valueOf(mLastLocation.getLatitude()));
+        longitude.setText(String.valueOf(mLastLocation.getLongitude()));
+        if (mLastLocation != null) {
+                initilizeMap();
+            }
+        } catch (Exception e) {
+            AnalyticsManager.getInstance().raiseException("Merchant_Registration",e);
+            e.printStackTrace();
+        }
+    }
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        System.out.println("failed");
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        System.out.println("suspended");
+    }
+
+    /**
+     * function to load map. If map is not created it will create it for you
+     * */
+    private void initilizeMap() {
+        double latitude=mLastLocation.getLatitude();
+        double longitutde=mLastLocation.getLongitude();
+        if (googleMap == null) {
+            googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+                    R.id.map)).getMap();
+            googleMap.setMyLocationEnabled(true);
+            googleMap.setBuildingsEnabled(true);
+            LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            MarkerOptions markerOptions= new MarkerOptions();
+            markerOptions.position(latLng);
+            googleMap.addMarker(markerOptions);
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            Geocoder geoCoder=new Geocoder(this);
+            try {
+               List<Address> addressList= geoCoder.getFromLocation(latitude, longitutde, 1);
+                Address address=addressList.get(0);
+                EditText merchantAddress = (EditText) findViewById(R.id.merchantAddress);
+                merchantAddress.setText(address.getAddressLine(0)+", "+ address.getAddressLine(1));
+                EditText merchantLocality = (EditText) findViewById(R.id.merchantLocality);
+                merchantLocality.setText(address.getSubLocality());
+                EditText merchantCity = (EditText) findViewById(R.id.merchantCity);
+                merchantCity.setText(address.getLocality());
+                EditText merchantState = (EditText) findViewById(R.id.merchantState);
+                merchantState.setText(address.getAdminArea());
+                EditText merchantCountry = (EditText) findViewById(R.id.merchantCountry);
+                merchantCountry.setText(address.getCountryName());
+                address.getCountryName();
+            }catch(IOException ex)
+            {
+                AnalyticsManager.getInstance().raiseException("Merchant_Registration",ex);
+                ex.printStackTrace();
+                System.out.println(ex.toString());
+            }
+            if (googleMap == null) {
+                Toast.makeText(getApplicationContext(),
+                        "Sorry! unable to create maps", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_merchant_registration, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        initilizeMap();
+    }
+    public void register(View v) {
+
+        final EditText zisplayHandleText = (EditText) findViewById(R.id.zisplayHandle);
+        final String zisplayHandle=zisplayHandleText.getText().toString();
+        final EditText merchantAddressText = (EditText) findViewById(R.id.merchantAddress);
+        final String merchantAddress=merchantAddressText.getText().toString();
+        if(zisplayHandle.isEmpty() || merchantAddress.isEmpty())
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Handle or address is missing", Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
+        final EditText merchantLocalityText = (EditText) findViewById(R.id.merchantLocality);
+        final EditText merchantCityText = (EditText) findViewById(R.id.merchantCity);
+        final EditText merchantStateText = (EditText) findViewById(R.id.merchantState);
+        final EditText merchantCountryText = (EditText) findViewById(R.id.merchantCountry);
+        final EditText merchantLongitude = (EditText) findViewById(R.id.merchantLangitude);
+        final EditText merchantLatitude = (EditText) findViewById(R.id.merchantLatitude);
+
+        System.out.println(zisplayHandle);
+        System.out.println("success");
+        final LocalData localDataObj=LocalData.getInstance();
+
+        HashMap merchantMap=new HashMap<String,String>();
+        Merchant merchant=new Merchant();
+        merchantMap.put("title",localDataObj.getData("title").toString());
+        merchantMap.put("isVerified",true);
+        merchantMap.put("mobileNo",localDataObj.getData("mobileNo").toString());
+        merchantMap.put("name",zisplayHandle);
+        merchantMap.put("address",merchantAddress);
+        merchantMap.put("locality",merchantLocalityText.getText().toString());
+        merchantMap.put("city",merchantCityText.getText().toString());
+        merchantMap.put("state",merchantStateText.getText().toString());
+        merchantMap.put("country",merchantCountryText.getText().toString());
+        merchantMap.put("country",merchantCountryText.getText().toString());
+        merchantMap.put("location", merchantLatitude.getText().toString() + "," + merchantLongitude.getText().toString());
+
+       /* merchant.setId("54db46f2cbe1f9f343915b74");
+        merchant.setTitle("Ashok");
+        merchant.setMobileNo("9810800878");
+        merchant.setVerified(true);
+        merchant.setName(zisplayHandle);
+        merchant.setAddress(merchantAddress);
+        merchant.setLocality(merchantLocalityText.getText().toString());
+        merchant.setCity(merchantCityText.getText().toString());
+        merchant.setState(merchantStateText.getText().toString());
+        merchant.setCountry(merchantCountryText.getText().toString());*/
+
+//        merchant.setLocation(mLastLocation);
+        omgService.updateMerchant(localDataObj.getData("merchantId").toString(), merchantMap, new Callback<Merchant>() {
+            @Override
+            public void success(Merchant merchantObj, Response response) {
+                if (merchantObj != null) {
+
+                    String userId=localDataObj.getData("userId");
+
+
+                    MixPanel.getInstance().setProfileAttribute(userId,"$name",zisplayHandle);
+                    MixPanel.getInstance().setProfileAttribute(userId,"locality",merchantObj.getLocality());
+                    MixPanel.getInstance().setProfileAttribute(userId,"city",merchantObj.getCity());
+                    MixPanel.getInstance().setProfileAttribute(userId,"state",merchantObj.getState());
+                    MixPanel.getInstance().setProfileAttribute(userId,"country",merchantObj.getCountry());
+                    System.out.println("Merchant received");
+                    LocalData localDataObj=LocalData.getInstance();
+                    localDataObj.saveData("handle",zisplayHandle);
+                    localDataObj.saveData("registered",true);
+                    Intent intent = new Intent(UserRegistrationActivity.this, InviteFollowers.class);
+                    startActivity(intent);
+
+                }
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("error " + error.getMessage());
+            }
+        });
+
+
+    }
+}

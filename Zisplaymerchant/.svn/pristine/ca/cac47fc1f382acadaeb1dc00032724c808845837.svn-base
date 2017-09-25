@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userchat_image"
+        android:src="@drawable/test"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:id="@+id/userchatBubbelBlock"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_toRightOf="@+id/userchat_image"
+
+        >
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/triangle"
+            android:id="@+id/triangle"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/userchat_image"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userchatBubbel"
+            android:background="@drawable/chat_bubble"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/userChat_message"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/catalogProductTextColor"
+                android:paddingRight="5dp"
+                android:text="Interested in purchasing Blue Geometric pattern bag"
+                />
+
+
+        </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="04:36 pm Yesterday"
+        android:layout_below="@+id/userchatBubbelBlock"
+        android:layout_toRightOf="@id/userchat_image"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+
+
+        />
+</RelativeLayout>

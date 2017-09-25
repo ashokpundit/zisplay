@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#fcfcfc"
+
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/pure_white"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/customtoolbar"
+        android:background="@color/pure_white"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/back"
+            android:padding="16dp"
+            android:id="@+id/upbutton"
+            android:layout_height="wrap_content"
+            android:onClick="goBack"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRODUCTS"
+
+            android:id="@+id/toolTitle"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/upbutton"
+            android:textColor="@color/catalogProductTextColor"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/toolbar_sort"
+            android:padding="16dp"
+            android:id="@+id/optionButton"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:id="@+id/selectedItemOption"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/delete"
+                android:padding="16dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/deleteButton"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/unpublish_archive"
+                android:id="@+id/archiveButton"
+                android:padding="16dp"
+                />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+    </android.support.v7.widget.Toolbar>

@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.hlistviewanimations/hlistviewanimations-library/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cba0f880ba51ab11bcb4fa26b53814ee802589ae">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-2dd0a912c59cf50d02028682c2bc16a4e5c512ea.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-1cea7008011b91062667366e3e8ba9da638eda5c.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/17.0/9c6ef172e8de35fd8d4d8783e4821e57cdef7445/guava-17.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9c6ef172e8de35fd8d4d8783e4821e57cdef7445">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/guava-17.0-28a468f333df42c0e7e4991a095751327854b0ce.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.adobe.creativesdk/image/4.0.0/libs/localytics.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="84bbdcfb2597b4781f98aed42ca21ae14d86f2cc">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/localytics-7cce18e274b05349ed47edd52dee7d515a2b305a.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="02534c458682c73f5b9871131ab3098d3f987ca3">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okio-1.0.0-41b0b33bd4af4c863f1333422af8cdb9e35df880.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="02534c458682c73f5b9871131ab3098d3f987ca3">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okio-1.0.0-41b0b33bd4af4c863f1333422af8cdb9e35df880.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.0.0/afe8399d352713b66e597e9670c741d1e60ae923/okhttp-urlconnection-2.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="afe8399d352713b66e597e9670c741d1e60ae923">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.0.0-7b4333f527ef4d7a5f89a43acc6837dafef6aca1.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/17.0/9c6ef172e8de35fd8d4d8783e4821e57cdef7445/guava-17.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="9c6ef172e8de35fd8d4d8783e4821e57cdef7445">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/guava-17.0-28a468f333df42c0e7e4991a095751327854b0ce.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-940161c576ac0888d205963c2027f9787cca47ee.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/gson-2.3.1-9890a8361b8fe5124df3dbcbcdac469afb003fd6.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/answers/1.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="12a82f51a488d577e124fd6038ff3b533311d4b9">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-7b86fe642b33d957d6b58a63960a3448d7a9c15f.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.horizontallistview/hlistview/1.3.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29c804f1b341567bb079fe73cbc58e6fca69330a">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-3967584afd730c18105b227e3e6c8b3662c8e700.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.strongloop/loopback-sdk-android/1.5.1/2a6775d7f98dc3439f3d540a871b7f9db9cccc56/loopback-sdk-android-1.5.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2a6775d7f98dc3439f3d540a871b7f9db9cccc56">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/loopback-sdk-android-1.5.1-181b28cb74061d3d77edb5389434c984a65a1f73.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.disklrumulticache/disklrumulticache/1.0.5/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c64c381ab4f5f2bb2112614f42974009501ee432">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-b0e3ebbabb370fed2fccacda53eb0152d13ccf04.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-ccf7dbb5444784085fef8fdbb38dc146b9a798f8.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.adobe.creativesdk.foundation/auth/0.3.94/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77cb6e5adc33b0e624e47c938605f487011aa7c4">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-bfc15696f6e0ed7d717873ef902fb8e7ea4be70b.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-98d8503a3c562abc9eca696f12d43cafe6c2cafa.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.ab/ab-test/2.0.5/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="df82d207d636cc832c47e9c8ffad21415981448c">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-61cad6a8d02458f3190f9e5750299b90b38b6320.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.viewrevealanimator/view-reveal-animator/1.0.2/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="450996311b30ee12990f2176a5154d3c2d3c7dc5">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-b1c56e1dfe5580a2cc7437960a7fef307b42b0e8.jar" />
+    </item>
+    <item
+        jar="/home/ashok/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-75d88d0aaca23c3e25ecdc31cab11cd938706ad2.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-1cea7008011b91062667366e3e8ba9da638eda5c.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.adobe.creativesdk/image/4.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5a6b50c80e2260fec87fda2c878e8b1f17e1a4a3">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-3bb16eb79770eefb5c7ec3300ed8777384db5921.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.0.0/afe8399d352713b66e597e9670c741d1e60ae923/okhttp-urlconnection-2.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="afe8399d352713b66e597e9670c741d1e60ae923">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.0.0-7b4333f527ef4d7a5f89a43acc6837dafef6aca1.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.mixpanel.android/mixpanel-android/4.5.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4fab23a76732ffb2cbfb6aeaafc1d2491cb02e80">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-2ff05b4f3c26f7168b689f0f17319302121885ba.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.adobe.creativesdk/image/4.0.0/libs/aviary-sdk-4.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a62e21f4b1a2893673fc266c9e0822774e8f06a3">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/aviary-sdk-4.0.0-f62fc665dda77782937fddd3f5aeaf095e5fbb10.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-50ba49e9222bc4e60cce7cfd34dcf1f85f5caccd.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/gson-2.3.1-9890a8361b8fe5124df3dbcbcdac469afb003fd6.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/de.greenrobot/eventbus/2.2.1/a18ff12a9ab5ae52fd30d42f134517997568231e/eventbus-2.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/eventbus-2.2.1-c1115e3503dbd15d74ca2b1b36f4f2955599f00c.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/org.atteo/evo-inflector/1.2/80ff9507ae75b5d007d44e856dba6953ff856a69/evo-inflector-1.2.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="80ff9507ae75b5d007d44e856dba6953ff856a69">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/evo-inflector-1.2-003c3fd030c74ab3501bdc3a7ede715827f28105.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.targettooltip/target-tooltip-library/1.2.4/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="94849a24ed0a2c32d1895d4776138cb6ccf2781e">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-a7f2ba7c9aace5a462c53b7e02bc26d553ce97a9.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-50ba49e9222bc4e60cce7cfd34dcf1f85f5caccd.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.strongloop/loopback-sdk-android/1.5.1/2a6775d7f98dc3439f3d540a871b7f9db9cccc56/loopback-sdk-android-1.5.1.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="2a6775d7f98dc3439f3d540a871b7f9db9cccc56">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/loopback-sdk-android-1.5.1-181b28cb74061d3d77edb5389434c984a65a1f73.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/library-2.4.0-b9bc2b848f9e2307b31085ada10f5584a1f231eb.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-5655fd988199854a9ed089be77bbe2057296d98f.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.strongloop/loopback-sdk-android/1.5.1/2a6775d7f98dc3439f3d540a871b7f9db9cccc56/loopback-sdk-android-1.5.1.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="2a6775d7f98dc3439f3d540a871b7f9db9cccc56">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/loopback-sdk-android-1.5.1-181b28cb74061d3d77edb5389434c984a65a1f73.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-ccf7dbb5444784085fef8fdbb38dc146b9a798f8.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/libs/FlurryAnalytics-5.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee10ddd768ed27510e47b14a4360d5646a6d853">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/FlurryAnalytics-5.1.0-c38046197575bfb8b4a40241769e4fa4b92f9277.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.intellij/annotations/12.0/bbcf6448f6d40abe506e2c83b70a3e8bfd2b4539/annotations-12.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="bbcf6448f6d40abe506e2c83b70a3e8bfd2b4539">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/annotations-12.0-d82943bef76b82c25796375296c6fb98017dd516.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.3.2/90a3822c38ec8c996e84c16a3477ef632cbc87a3/commons-lang3-3.3.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/commons-lang3-3.3.2-6a1ef5fcd656f3347b2d11ccad4f09941daa9c71.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.jakewharton/disklrucache/2.0.2/93b399470e72c0bc8cb52379943b63c9aa586cd8/disklrucache-2.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="93b399470e72c0bc8cb52379943b63c9aa586cd8">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/disklrucache-2.0.2-59906f32957851a549fe9d7e780ff4d2f23b3ef3.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/commons-io-2.4-22856895cff2e9d51ad22bb06449ee59cc848f71.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.android.support/palette-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="926692214530f39eaed89159237d26cdc0ae6e48">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-069ee6112af966eafab2f43631a8c5c7587cb933.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/beta/1.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="13fcdacaecfcce00c7dd129264d70da2ff195563">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-6e0ad2cc213e87ef24e0a6753dc4b6f95f2f71ec.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.nhaarman.listviewanimations/lib-core/3.1.0/f3f9629b068554d8513a2aaf34418171bf430851/lib-core-3.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f3f9629b068554d8513a2aaf34418171bf430851">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/lib-core-3.1.0-84517f673e21defe6b28dd577f7bf984812f056b.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-1cea7008011b91062667366e3e8ba9da638eda5c.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-a42e0e2a75d27422cac420597ce6d99b335aa5fa.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/17.0/9c6ef172e8de35fd8d4d8783e4821e57cdef7445/guava-17.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="9c6ef172e8de35fd8d4d8783e4821e57cdef7445">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/guava-17.0-28a468f333df42c0e7e4991a095751327854b0ce.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/io.fabric.sdk.android/fabric/1.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="bb47ba58ffd67d44cd9e5cc6761cac747b4a6acf">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-c69e1d69bb202860f8ea698efa7b3c45a0a76640.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-ff564249f7e6e6a0ef394b5db45fbf509f079587.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/org.atteo/evo-inflector/1.2/80ff9507ae75b5d007d44e856dba6953ff856a69/evo-inflector-1.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="80ff9507ae75b5d007d44e856dba6953ff856a69">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/evo-inflector-1.2-003c3fd030c74ab3501bdc3a7ede715827f28105.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-ccf7dbb5444784085fef8fdbb38dc146b9a798f8.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.picasso/picasso/2.3.5.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5b7581dad66dbd31d458540d0105dca88772e378">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-133ea7ddcd0361f27600089ea78a4b6291f140d8.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="02534c458682c73f5b9871131ab3098d3f987ca3">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okio-1.0.0-41b0b33bd4af4c863f1333422af8cdb9e35df880.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-50ba49e9222bc4e60cce7cfd34dcf1f85f5caccd.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.exif/android-exif-extended/1.0.6/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ffd90de109eaca4d27687fc5fcae0f73701ea71f">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-8b3a0be9ca3bf6f5040e2bc21a87fea7c0d56780.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/org.atteo/evo-inflector/1.2/80ff9507ae75b5d007d44e856dba6953ff856a69/evo-inflector-1.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="80ff9507ae75b5d007d44e856dba6953ff856a69">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/evo-inflector-1.2-003c3fd030c74ab3501bdc3a7ede715827f28105.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.21.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0285ad8da812e92dda76ed5d0dcba05724c7911d">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-e57f1403d0b2601756acd5a2d13b5a91784bed9a.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics/2.2.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7c9c3b5f5f093c43123e905d97d6a06373393afa">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/classes-1e82a5b3960208727d9eade29b7b0540fc1966df.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/gson-2.3.1-9890a8361b8fe5124df3dbcbcdac469afb003fd6.jar" />
+    </item>
+    <item
+        jar="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/exploded-aar/it.sephiroth.android.library.imagezoom/imagezoom/2.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8fbd4390c086423b591596e4b04a03e0e59b9397">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/release/classes-8184e35a60249f2065bdcda082a1bc3b87871c7d.jar" />
+    </item>
+    <item
+        jar="/home/ashok/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.0.0/afe8399d352713b66e597e9670c741d1e60ae923/okhttp-urlconnection-2.0.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="afe8399d352713b66e597e9670c741d1e60ae923">
+        <dex dex="/home/ashok/AndroidStudioProjects/Zisplaymerchant/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.0.0-7b4333f527ef4d7a5f89a43acc6837dafef6aca1.jar" />
+    </item>
+
+</items>

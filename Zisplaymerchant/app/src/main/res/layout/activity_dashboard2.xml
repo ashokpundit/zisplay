@@ -1,0 +1,426 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vun.zisplaymerchant.activity.Dashboard2"
+    android:background="@color/white_background">
+
+    <RelativeLayout
+        android:id="@+id/profileRow"
+        android:layout_width="fill_parent"
+        android:layout_height="88dp"
+        android:background="@color/pure_white"
+        android:onClick="showProfile"
+        >
+
+        <ImageView
+
+            android:id="@+id/profileImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="16dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="32dp"
+            android:layout_toRightOf="@id/profileImageView"
+
+            >
+
+            <TextView android:text="Eclectiques Boutique "
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/heading"
+                android:layout_marginRight="40dp"
+                android:textSize="16dp"
+                android:textColor="#272831"
+                android:onClick="showProfile"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="zisplay.com/eclectique"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginRight="36dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/green_button"
+                android:id="@+id/merchantUrl"
+
+
+                />
+
+        </LinearLayout>
+
+        <ImageView
+
+            android:id="@+id/rightarrowIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingRight="16dp"
+            android:src="@drawable/link_next"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="24dp"
+
+            />
+
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#edf0f5"
+        android:layout_above="@+id/dasboardScroll"
+        />
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/profileRow"
+        android:layout_above="@id/addProductBtn"
+        android:id="@+id/dasboardScroll"
+        android:background="@color/pure_white"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catalogRow"
+        android:layout_gravity="center_vertical"
+        android:background="@color/pure_white"
+        android:onClick="showCatalog"
+        >
+        <ImageView
+
+            android:id="@+id/catalogIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/catalog"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+
+
+            />
+
+        <TextView
+            android:id="@+id/catalogText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/catalogIcon"
+            android:layout_marginLeft="16dp"
+            android:text="17 Products"
+            android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+            android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+            android:textColor="@color/text_color"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#edf0f5"
+            android:layout_below="@+id/catalogText"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="490 views 32 likes"
+            android:id="@+id/noOfProductText"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/faded_text"
+            android:textSize="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/messageRow"
+            android:layout_below="@+id/catalogRow"
+            android:layout_gravity="center_vertical"
+            android:background="@color/pure_white"
+            android:onClick="showChat"
+
+            >
+            <ImageView
+
+                android:id="@+id/messageIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/messages"
+                android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+                android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+                android:paddingLeft="@dimen/paddingLeft_dashboard_list_icon"
+                />
+
+            <TextView
+                android:id="@+id/messageText"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="Messages"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_color"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/messageIcon"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="36 New"
+                android:id="@+id/Unreadcount"
+                android:textColor="#ff5021"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textSize="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/round_textview"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#edf0f5"
+                android:layout_below="@+id/Unreadcount"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/followersRow"
+            android:layout_below="@+id/messageRow"
+            android:layout_gravity="center_vertical"
+            android:background="@color/pure_white"
+            android:onClick="showFollowers"
+            >
+            <ImageView
+
+                android:id="@+id/followerIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/followers"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/paddingLeft_dashboard_list_icon"
+                />
+
+            <TextView
+                android:id="@+id/followersText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/followerIcon"
+                android:layout_marginLeft="16dp"
+                android:text="10  Followers"
+                android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+                android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+                android:textColor="@color/text_color"
+                android:textSize="16dp"
+                android:textStyle="bold"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#edf0f5"
+                android:layout_below="@+id/followersText"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/paymentsRow"
+            android:layout_below="@+id/followersRow"
+            android:layout_gravity="center_vertical"
+            android:background="@color/pure_white"
+            android:onClick="showPayments"
+            >
+            <ImageView
+
+                android:id="@+id/paymentsIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/payments"
+                android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+                android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+                android:paddingLeft="@dimen/paddingLeft_dashboard_list_icon"
+                />
+
+            <TextView
+                android:id="@+id/paymentsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@+id/paymentsIcon"
+                android:text="Payments"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_color"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="36 Pending"
+                android:id="@+id/paymentPending"
+                android:textColor="#ff5021"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textSize="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/round_textview"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#edf0f5"
+                android:layout_below="@+id/paymentPending"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settingsRow"
+            android:layout_below="@+id/paymentsRow"
+            android:layout_gravity="center_vertical"
+            android:background="@color/pure_white"
+            android:onClick="showSettings"
+
+            >
+            <ImageView
+
+                android:id="@+id/settingIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dashboard_settings"
+                android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+                android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+                android:paddingLeft="@dimen/paddingLeft_dashboard_list_icon"
+                />
+
+            <TextView
+                android:id="@+id/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@+id/settingIcon"
+                android:text="Settings"
+                android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+                android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+                android:textColor="@color/text_color"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#edf0f5"
+                android:layout_below="@+id/settingText"
+                />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/helpRow"
+            android:layout_below="@+id/settingsRow"
+            android:layout_gravity="center_vertical"
+            android:background="@color/pure_white"
+            android:onClick="showSocialSettings"
+            >
+                <ImageView
+
+                    android:id="@+id/helpIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dashboard_help"
+                    android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+                    android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+                    android:paddingLeft="@dimen/paddingLeft_dashboard_list_icon"
+                    />
+
+                <TextView
+                    android:id="@+id/helpText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_alignRight="@+id/helpIcon"
+                    android:text="Help and Support"
+                    android:paddingBottom="@dimen/paddingBottom_dashboard_list_icon"
+                    android:paddingTop="@dimen/paddingTop_dashboard_list_icon"
+                    android:textColor="@color/text_color"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#edf0f5"
+                android:layout_below="@+id/helpRow"
+                />
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/addProductBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Add new Product +"
+        android:background="@color/green_button"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:textColor="@color/pure_white"
+        android:onClick="uploadProduct"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>
+
+

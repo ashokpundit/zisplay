@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">"Zisplay"</string>
+    <string name="hello_world">Welcome to Zisplay!</string>
+    <string name="action_settings">Settings</string>
+    <string name="txt_welcome">Welcome to zisplay. </string>
+    <string name="title_activity_smsconfirmation">SMSConfirmation</string>
+    <string name="confirmButton">Confirm</string>
+    <string name="title_sharingoption_list">SharingOptions</string>
+    <string name="title_sharingoption_detail">SharingOption Detail</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="OMGHandle">Zisplay Handle</string>
+    <string name="title_activity_location_pick">Map</string>
+    <string name="local_data_file_name">zisplay.datafile</string>
+    <string name="title_activity_user_registration">Register</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_dashboard">dashboard</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_dashbaord">Dashbaord</string>
+    <string name="title_activity_new_product">NewProductActivity</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_catalog">Catalog</string>
+    <string name="title_activity_invite_followers">InviteFollowers</string>
+    <string name="facebook_app_id">1409405566028830</string>
+    <string name="title_facebook_login">Login With Facebook</string>
+    <string name="title_activity_invite_by_sms">InviteBySMS</string>
+    <string name="title_activity_chat_history">ChatHistory</string>
+    <string name="title_activity_conversastion_list">ConversastionList</string>
+    <string name="title_activity_product_edit">ProductEdit</string>
+    <string name="title_activity_zisplay_base">ZisplayBaseActivity</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_merchant_profile">MerchantProfile</string>
+    <string name="title_activity_followers_list">FollowersList</string>
+    <string name="title_activity_payment_list">PaymentList</string>
+    <string name="title_activity_payment_link">PaymentLink</string>
+    <string name="filter_title_merchant">merchant page deep linking</string>
+    <string name="title_activity_loved_product_list">LovedProductList</string>
+    <string name="title_activity_payment_view">PaymentView</string>
+
+</resources>

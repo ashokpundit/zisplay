@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:paddingBottom="20dp"
+       android:paddingTop="20dp"
+       android:paddingRight="16dp"
+       android:paddingLeft="16dp"
+
+       >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHARE TO INCRESE REACH"
+            android:textColor="#7b8fab"
+            android:textSize="12dp"
+
+
+            />
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerVertical="true"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/sort"
+           android:id="@+id/btnClose"
+
+
+           />
+       </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/pure_white"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:onClick="shareOnWhatsApp"
+            android:id="@+id/whatsappShare"
+            android:paddingRight="16dp"
+
+            >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Share on Whatsapp"
+                    android:textSize="14dp"
+                    android:textColor="@color/catalogProductTextColor"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+
+                    />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/social_whatsapp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+
+                />
+            </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:onClick="shareOnInstagram"
+            android:id="@+id/instagramShare"
+            android:paddingRight="16dp"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share on Instagram "
+                android:textSize="14dp"
+                android:textColor="@color/catalogProductTextColor"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/social_insta"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:onClick="shareOnPintrest"
+            android:id="@+id/pinteretShare"
+            android:paddingRight="16dp"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share on Pinterest"
+                android:textSize="14dp"
+                android:textColor="@color/catalogProductTextColor"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/social_pinterest"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:onClick="shareOnFacebook"
+            android:id="@+id/facebooShare"
+            android:paddingRight="16dp"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share on Facebook"
+                android:textSize="14dp"
+                android:textColor="@color/catalogProductTextColor"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/social_facebook"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:onClick="shareOnTwitter"
+            android:id="@+id/witterShare"
+            android:paddingRight="16dp"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share on Twitter"
+                android:textSize="14dp"
+                android:textColor="@color/catalogProductTextColor"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/social_twitter"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:background="#f6fbff"
+            android:id="@+id/moreShare"
+            android:paddingRight="16dp"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More ..."
+                android:textSize="14dp"
+                android:textColor="@color/catalogProductTextColor"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/social_share"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DONE"
+        android:textColor="#7b8fab"
+        android:textSize="12dp"
+        android:background="#f6fbff"
+        android:id="@+id/dialogok"
+        android:onClick="hideDialog"
+        />
+
+</LinearLayout>

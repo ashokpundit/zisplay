@@ -1,0 +1,16 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="white_background">#f8f9fb</color>
+    <color name="green_button">#44d19c</color>
+    <color name="text_color">#282830</color>
+    <color name="pure_white">#ffffff</color>
+    <color name="faded_text">#a8a9bb</color>
+    <color name="colorPrimary">#ffffff</color>
+
+    <color name="catalogProductTextColor">#324157</color>
+
+    <color name="actionbar_bg_color">#fcfcfc</color>
+    <color name="selected_tab_text">#05c07c</color>
+    <color name="default_tab_text">#324157</color>
+</resources>

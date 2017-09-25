@@ -1,0 +1,429 @@
+package vun.zisplaymerchant.activity;
+
+import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.provider.MediaStore;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.aviary.android.feather.sdk.AviaryIntent;
+import com.aviary.android.feather.sdk.internal.Constants;
+import com.facebook.UiLifecycleHelper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+
+import it.sephiroth.android.library.picasso.Picasso;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import vun.zisplaymerchant.R;
+import vun.zisplaymerchant.managers.AnalyticsManager;
+import vun.zisplaymerchant.managers.LocalData;
+import vun.zisplaymerchant.models.AppUser;
+import vun.zisplaymerchant.models.Merchant;
+import vun.zisplaymerchant.models.ZisplayImage;
+import vun.zisplaymerchant.network.OMGServices;
+import vun.zisplaymerchant.network.RestClient;
+import vun.zisplaymerchant.utils.AppConstants;
+
+
+public class Profile extends ZisplayBaseActivity {
+
+    Merchant merchantObj;
+    EditText storeLocationeEdit;
+    EditText storeTitleEdit;
+    OMGServices omgService= RestClient.getInstance().getApiService();
+    LocalData localData= LocalData.getInstance();
+    ImageView coverImage;
+    private UiLifecycleHelper uiHelper;
+    final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1;
+    final static int AVIARY_CROP=3;
+    Uri imageUri = null;
+    Uri imageUri2=null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
+        analytics(this.getLocalClassName());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.back);
+        getSupportActionBar().setTitle("PROFILE");
+        merchantObj= AppConstants.merchantObj;
+        setUI();
+        AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.storeLocationeEdit);
+        autoCompView.setAdapter(new PlacesAutoCompleteAdapter(this.getBaseContext(),R.layout.address_auto_suggest_layout));
+
+    }
+
+
+    public void startCamera(View v)
+    {
+
+
+        HashMap event=new HashMap<String,String>();
+        event.put("screenName","merchant PRofile");
+        event.put("label","Merchant  Image");
+        event.put("action","Camera");
+        event.put("Category","Merchant Profile Update");
+        AnalyticsManager.getInstance().sendEvent(event);
+        Random r = new Random();
+        int i1 = (r.nextInt(10000));
+        String fileName = i1+"-"+"product-image.jpg";
+        String fileName2 = i1+"-"+"product-image-2.jpg";
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, fileName);
+        values.put(MediaStore.Images.Media.DESCRIPTION,"Merchant image");
+        ContentValues values2 = new ContentValues();
+        values2.put(MediaStore.Images.Media.TITLE, fileName2);
+        values2.put(MediaStore.Images.Media.DESCRIPTION,"Merchant image");
+        imageUri = getContentResolver().insert(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        imageUri2 = getContentResolver().insert(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values2);
+        Intent intent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+            startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+        }
+    }
+
+
+    private void performCrop(Uri picUri) {
+        Intent newIntent = new AviaryIntent.Builder(this)
+                .setData(picUri) // input image src
+                .build();
+        startActivityForResult(newIntent, AVIARY_CROP);
+        return;
+    }
+
+    @Override
+    protected void onActivityResult( int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ( requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if ( resultCode == RESULT_OK) {
+                performCrop(imageUri);
+            } else if ( resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, " Picture was not taken ", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, " Picture was not taken ", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (requestCode == AVIARY_CROP) {
+            if (resultCode == RESULT_OK) {
+                Uri mImageUri = data.getData(); // generated output file
+                Bundle extra = data.getExtras();
+                if (null != extra) {
+                    // image has been changed?
+                    boolean changed = extra.getBoolean(Constants.EXTRA_OUT_BITMAP_CHANGED);
+                }
+                imageUri2=mImageUri;
+                new LoadImagesFromSDCard().execute(mImageUri.toString());
+            }
+        }
+
+    }
+
+    class LoadImagesFromSDCard  extends AsyncTask<String, Void, Void> {
+        private ProgressDialog Dialog = new ProgressDialog(Profile.this);
+        Bitmap mBitmap;
+        Uri uri = null;
+        protected void onPreExecute() {
+            Dialog.setMessage(" Loading image from Sdcard..");
+            Dialog.show();
+        }
+        protected Void doInBackground(String... urls) {
+            Bitmap bitmap = null;
+            Bitmap newBitmap = null;
+
+            try {
+
+//                uri = Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "" + urls[0]);
+                File imageFile=new File(urls[0]);
+                uri=Uri.parse(urls[0]);
+                /**************  Decode an input stream into a bitmap. *********/
+//                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+                bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+                if (bitmap != null) {
+                    newBitmap = Bitmap.createScaledBitmap(bitmap, 170, 170, true);
+                    bitmap.recycle();
+                    if (newBitmap != null) {
+                        mBitmap = newBitmap;
+                    }
+                }
+            } catch (Exception e) {
+                AnalyticsManager.getInstance().raiseException("Product",e);
+                Dialog.dismiss();
+                cancel(true);
+            }
+            return null;
+        }
+        protected void onPostExecute(Void unused) {
+            Dialog.dismiss();
+            if(mBitmap != null)
+            {
+                coverImage.setImageBitmap(mBitmap);
+                ZisplayImage image=new ZisplayImage();
+                image.setType("merchant");
+                image.setParentId(merchantObj.getId());
+                image.setLocalImageUri(uri);
+                image.uploadImage();
+
+            }
+        }
+    }
+
+
+    public void editLocation(View V)
+    {
+        storeLocationeEdit.setEnabled(true);
+        storeLocationeEdit.setFocusableInTouchMode(true);
+        storeLocationeEdit.setFocusable(true);
+    }
+    private void setUI()
+    {
+        coverImage=(ImageView)(findViewById(R.id.coverImage));
+        TextView merchantUrl=(TextView)(findViewById(R.id.merchantUrl));
+        TextView merchantMobile=(TextView)(findViewById(R.id.merchantMobile));
+        storeTitleEdit=(EditText)(findViewById(R.id.storeTitleEdit));
+        storeLocationeEdit=(EditText)(findViewById(R.id.storeLocationeEdit));
+        if(merchantObj.getImageId()!=null && !merchantObj.getImageId().isEmpty())
+        {
+            String imagePath=AppConstants.CLOUDINARY_URL+"h_600,w_600/" + merchantObj.getImageId() + ".jpg";
+            Picasso.with(this).load(imagePath).into(coverImage);
+        }
+        merchantUrl.setText("zisplay.com/m-"+merchantObj.getName());
+        merchantMobile.setText(merchantObj.getMobileNo());
+        storeTitleEdit.setText(merchantObj.getTitle());
+        storeLocationeEdit.setText(merchantObj.getAddress());
+        storeTitleEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    HashMap merchantMap=new HashMap<String,String>();
+
+                    merchantMap.put("title",storeTitleEdit.getText().toString());
+
+                    omgService.updateAppUser(AppConstants.userAccessToken, AppConstants.userId, merchantMap, new Callback<AppUser>() {
+                        @Override
+                        public void success(AppUser merchantObj, Response response) {
+                            if (merchantObj != null) {
+                                Toast.makeText(Profile.this,"Title updated",Toast.LENGTH_LONG);
+                                AppConstants.merchantObj.setTitle(storeTitleEdit.getText().toString());
+
+                            }
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                            Toast.makeText(Profile.this,error.getMessage(),Toast.LENGTH_LONG);
+
+                            System.out.println("error " + error.getMessage());
+                        }
+                    });
+
+                }
+            }
+        });
+
+        storeLocationeEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    HashMap merchantMap=new HashMap<String,String>();
+
+                    merchantMap.put("address",storeLocationeEdit.getText().toString());
+
+                    omgService.updateAppUser(AppConstants.userAccessToken, AppConstants.userId, merchantMap, new Callback<AppUser>() {
+                        @Override
+                        public void success(AppUser merchantObj, Response response) {
+                            if (merchantObj != null) {
+                                Toast.makeText(Profile.this,"Title updated",Toast.LENGTH_LONG);
+                                AppConstants.merchantObj.setTitle(storeLocationeEdit.getText().toString());
+                            }
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                            Toast.makeText(Profile.this,error.getMessage(),Toast.LENGTH_LONG);
+                            System.out.println("error " + error.getMessage());
+                        }
+                    });
+
+                }
+            }
+        });
+
+
+
+    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_profile, menu);
+//        return true;
+//    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+
+
+
+
+    private static final String LOG_TAG = "Zisplay";
+
+    private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
+    private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
+    private static final String OUT_JSON = "/json";
+
+    private static final String API_KEY = AppConstants.GOOGLE_API_KEY;
+    JSONArray predsJsonArray;
+
+    private ArrayList<String> autocomplete(String input) {
+        ArrayList<String> resultList = null;
+
+        HttpURLConnection conn = null;        StringBuilder jsonResults = new StringBuilder();
+        try {
+            StringBuilder sb = new StringBuilder(PLACES_API_BASE + TYPE_AUTOCOMPLETE + OUT_JSON);
+            sb.append("?key=" + API_KEY);
+            sb.append("&components=country:in");
+            sb.append("&input=" + URLEncoder.encode(input, "utf8"));
+
+            URL url = new URL(sb.toString());
+            conn = (HttpURLConnection) url.openConnection();
+            InputStreamReader in = new InputStreamReader(conn.getInputStream());
+
+            // Load the results into a StringBuilder
+            int read;
+            char[] buff = new char[1024];
+            while ((read = in.read(buff)) != -1) {
+                jsonResults.append(buff, 0, read);
+            }
+        } catch (MalformedURLException e) {
+            Log.e(LOG_TAG, "Error processing Places API URL", e);
+            return resultList;
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Error connecting to Places API", e);
+            return resultList;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+
+        try {
+            // Create a JSON object hierarchy from the results
+            JSONObject jsonObj = new JSONObject(jsonResults.toString());
+            predsJsonArray = jsonObj.getJSONArray("predictions");
+
+            // Extract the Place descriptions from the results
+            resultList = new ArrayList<String>(predsJsonArray.length());
+            for (int i = 0; i < predsJsonArray.length(); i++) {
+                resultList.add(predsJsonArray.getJSONObject(i).getString("description"));
+            }
+        } catch (JSONException e) {
+            Log.e(LOG_TAG, "Cannot process JSON results", e);
+        }
+
+        return resultList;
+    }
+
+    private class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
+        private ArrayList<String> resultList;
+
+        public PlacesAutoCompleteAdapter(Context context, int textViewResourceId) {
+            super(context, textViewResourceId);
+        }
+
+        @Override
+        public int getCount() {
+            return resultList.size();
+        }
+
+        @Override
+        public String getItem(int index) {
+            return resultList.get(index);
+        }
+
+
+        @Override
+        public Filter getFilter() {
+            Filter filter = new Filter() {
+                @Override
+                protected Filter.FilterResults performFiltering(CharSequence constraint) {
+                    FilterResults filterResults = new FilterResults();
+                    if (constraint != null) {
+                        // Retrieve the autocomplete results.
+                        resultList = autocomplete(constraint.toString());
+
+                        // Assign the data to the FilterResults
+                        filterResults.values = resultList;
+                        filterResults.count = resultList.size();
+                    }
+                    return filterResults;
+                }
+
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+                    if (results != null && results.count > 0) {
+                        notifyDataSetChanged();
+                    }
+                    else {
+                        notifyDataSetInvalidated();
+                    }
+                }};
+            return filter;
+        }
+    }
+
+}

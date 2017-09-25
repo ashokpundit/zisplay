@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="vun.zisplay" >
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="vun.zisplay.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="vun.zisplay.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--
+ The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".Zisplay"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activity.UserRegistrationActivity"
+            android:label="@string/title_activity_user_registration" >
+        </activity>
+        <activity
+            android:name=".activity.MapsActivity"
+            android:label="@string/title_activity_maps" >
+        </activity>
+        <activity
+            android:name=".activity.Dashboard"
+            android:label="@string/title_activity_dashbaord" >
+        </activity>
+        <activity
+            android:name=".activity.NewProductActivity"
+            android:label="@string/title_activity_new_product" >
+            <intent-filter android:label="@string/filter_title_merchant" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data
+                    android:host="www.zisplay.com"
+                    android:pathPrefix="/p-"
+                    android:scheme="http" />
+                <!-- note that the leading "/" is required for pathPrefix -->
+                <!-- Accepts URIs that begin with "example://gizmos” -->
+                <data
+                    android:host="p-"
+                    android:scheme="zislay" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".activity.Catalog"
+            android:label="@string/title_activity_catalog" >
+        </activity>
+        <activity
+            android:name=".activity.InviteFollowers"
+            android:label="@string/title_activity_invite_followers" >
+        </activity>
+        <activity
+            android:name=".activity.InviteBySMS"
+            android:label="@string/title_activity_invite_by_sms" >
+        </activity>
+        <activity
+            android:name=".activity.ChatHistory"
+            android:label="@string/title_activity_chat_history" >
+        </activity>
+        <activity
+            android:name=".activity.ConversastionList"
+            android:label="@string/title_activity_conversastion_list" >
+        </activity>
+        <activity
+            android:name=".activity.ProductEdit"
+            android:label="@string/title_activity_product_edit" >
+        </activity>
+        <activity
+            android:name=".activity.UserProfile"
+            android:label="@string/title_activity_user_profile" >
+        </activity>
+        <activity
+            android:name=".activity.MerchantProfile"
+            android:label="@string/title_activity_merchant_profile" >
+            <intent-filter android:label="@string/filter_title_merchant" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data
+                    android:host="www.zisplay.com"
+                    android:pathPrefix="/m-"
+                    android:scheme="http" />
+                <!-- note that the leading "/" is required for pathPrefix -->
+                <!-- Accepts URIs that begin with "example://gizmos” -->
+                <data
+                    android:host="m-"
+                    android:scheme="zislay" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.FollowersList"
+            android:label="@string/title_activity_followers_list" >
+        </activity>
+        <activity
+            android:name=".activity.PaymentList"
+            android:label="@string/title_activity_payment_list" >
+        </activity>
+        <activity
+            android:name=".activity.PaymentLink"
+            android:label="@string/title_activity_payment_link" >
+        </activity>
+        <!-- ActiveRecord -->
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="zisplay" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="c5d20ea0dcdccb746dff8b1288841ffa55b6bba0" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAvdqo6KGBHx0LVAlWhPeAO84Pu8zfVSUk" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <!-- Used for MixPanel Play Store Campaign Measurement -->
+        <receiver
+            android:name="com.mixpanel.android.mpmetrics.InstallReferrerReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Used for Google Play Store Campaign Measurement -->
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
+        <receiver
+            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.mixpanel.android.mpmetrics.GCMReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="vun.zisplay" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activity.LovedProductList"
+            android:label="@string/title_activity_loved_product_list" >
+        </activity>
+        <activity
+            android:name=".activity.PaymentView"
+            android:label="@string/title_activity_payment_view" >
+        </activity>
+    </application>
+
+</manifest>

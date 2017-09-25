@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@color/pure_white"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:src="@drawable/back"
+        android:padding="10dp"
+        android:id="@+id/upbutton"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DETAILS"
+        android:padding="10dp"
+        android:id="@+id/toolTitle"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/upbutton"
+        android:textColor="@color/catalogProductTextColor"
+        android:textSize="18dp"
+
+        />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/edit"
+            android:padding="10dp"
+            android:id="@+id/editButton"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/archiveButton"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/unpublish_archive"
+            android:padding="10dp"
+            android:id="@+id/archiveButton"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/deleteButton"
+            android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:src="@drawable/delete"
+        android:padding="10dp"
+        android:id="@+id/deleteButton"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

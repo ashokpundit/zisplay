@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#000000"
+    tools:context="vun.zisplaymerchant.activity.FullScreenViewActivity">
+    <include
+        layout="@layout/fullscreen_view_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ProductImageSlide"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/testbanner"
+        android:layout_below="@+id/toolbar"
+        android:adjustViewBounds="true"
+
+        />
+
+    <View
+        android:id="@+id/coverButtonTopImage"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_below="@+id/ProductImageSlide"
+        android:layout_marginTop="-60dp"
+        android:background="#adadad" />
+
+    <Button
+        android:id="@+id/coverPageButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="SET AS COVER IMAGE"
+        android:layout_below="@+id/coverButtonTopImage"
+        android:layout_marginTop="15dp"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:onClick="setAsPrimary"
+        />
+
+</RelativeLayout>

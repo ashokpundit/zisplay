@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="vun.zisplay.activity.NewProductActivity">
+
+
+
+
+
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+
+        android:id="@+id/scrollview"
+        >
+
+        <LinearLayout android:id="@+id/_imagesrow"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <ImageView
+        android:id="@+id/showImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/scrollview"
+        />
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+
+        android:hint="Product Title"
+        android:id="@+id/productTitle"
+        android:layout_below="@+id/showImg"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+
+        android:hint="Product Description"
+        android:id="@+id/productDescription"
+        android:layout_below="@+id/productTitle"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:hint="Price"
+        android:id="@+id/productPrice"
+        android:layout_below="@+id/productDescription"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+
+        android:hint="Collection"
+        android:id="@+id/productCollection"
+        android:layout_below="@+id/productPrice"
+        android:layout_marginTop="5dp" />
+
+
+    <Button android:text="Chat with Merchnat"
+        android:id="@+id/productSubmit"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/productCollection"
+        android:layout_height="wrap_content"
+        android:onClick="startChat" />
+
+</RelativeLayout>

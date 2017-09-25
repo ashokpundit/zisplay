@@ -1,0 +1,344 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_full_size"
+    tools:context="vun.zisplaymerchant.activity.Registration2">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:id="@+id/registerationBlock"
+        android:layout_height="fill_parent"
+
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:id="@+id/zisplay"
+
+            />
+        <TextView android:text="Easiet way to build a store &amp; reach the right audience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/heading"
+            android:layout_below="@+id/zisplay"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/pure_white"
+            android:textSize="16dp"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+
+            />
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstSection"
+            >
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:text="Please add your mobile number to start"
+                android:textSize="12dp"
+                android:textColor="#949eae"
+                android:gravity="center"
+                android:background="@color/pure_white"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:id="@+id/separator"
+                android:visibility="visible"
+                android:background="#e7eaf0"
+                />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="112dp"
+                android:background="@color/pure_white"
+                >
+
+                <TextView
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:text="+91"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/catalogProductTextColor"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp "
+                    android:id="@+id/mobileNo"
+                    android:hint="Mobile No"
+                    android:background="@color/pure_white"
+                    android:textSize="16dp"
+                    android:textColor="#04cc83"
+                   android:layout_gravity="center_vertical"
+
+                    />
+
+                </LinearLayout>
+
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/next"
+                android:layout_centerInParent="true"
+                android:text="GET STARTED"
+
+                android:onClick="sendMessage"
+                android:background="@color/green_button"
+                android:textColor="@color/pure_white"
+                android:textSize="20dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="16dp"
+                />
+
+            </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/createStore"
+        android:visibility="gone"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world"
+
+            android:textColor="@color/pure_white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:id="@+id/zisplay2"
+
+            />
+        <TextView android:text="Almost there . Just few more details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/heading2"
+            android:layout_below="@+id/zisplay2"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/pure_white"
+            android:textSize="16dp"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="@color/pure_white"
+            >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pure_white"
+                >
+
+                <TextView
+                    android:layout_width="128dp"
+                    android:layout_height="48dp"
+                    android:text="Unique handle"
+                    android:id="@+id/uniqueHandlerText"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="13dp"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/catalogProductTextColor"
+
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/handle"
+                    android:layout_marginLeft="128dp"
+                    android:layout_marginStart="128dp"
+                    android:layout_marginRight="16dp"
+                    android:textSize="13dp"
+                    android:layout_centerVertical="true"
+                    android:hint="Zisplay/"
+                    android:textColor="@color/green_button"
+                    android:layout_marginBottom="16dp"
+                    android:background="@null"
+
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:visibility="visible"
+                    android:background="#e7eaf0"
+                    android:layout_below="@+id/handle"
+                    android:layout_marginTop="16dp"
+                    />
+
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pure_white"
+                >
+
+                <TextView
+                    android:layout_width="128dp"
+                    android:layout_height="48dp"
+                    android:text="Storename"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="13dp"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/catalogProductTextColor"
+
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title"
+                    android:layout_marginLeft="128dp"
+                    android:layout_marginStart="128dp"
+                    android:layout_marginRight="16dp"
+                    android:textSize="13dp"
+                    android:layout_centerVertical="true"
+                    android:hint="Add a title for your store "
+                    android:textColor="@color/green_button"
+                    android:layout_marginBottom="16dp"
+                    android:background="@null"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:visibility="visible"
+                    android:background="#e7eaf0"
+                    android:layout_below="@+id/title"
+                    android:layout_marginTop="16dp"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pure_white"
+
+                >
+
+                <TextView
+                    android:layout_width="128dp"
+                    android:layout_height="48dp"
+                    android:text="Location"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="13dp"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/catalogProductTextColor"
+
+                    />
+
+
+
+                <AutoCompleteTextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="16dp"
+                    android:id="@+id/address"
+                    android:hint="Where are you based?"
+                    android:layout_marginLeft="128dp"
+                    android:layout_marginStart="128dp"
+                    android:layout_marginRight="16dp"
+                    android:textSize="13dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/green_button"
+                    android:layout_marginBottom="16dp"
+
+                    android:background="@null"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:visibility="visible"
+                    android:background="#e7eaf0"
+                    android:layout_below="@+id/address"
+                    android:layout_marginTop="16dp"
+
+                    />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Your store name is unique url on zisplay. It will be your identity and handle by which your customers will find you. And your location helps your nearby customers reach you"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:textColor="#9ca3ae"
+                android:background="#f6fbff"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:id="@+id/signup"
+                android:layout_centerInParent="true"
+                android:text="CREATE MY STORE"
+                android:textColor="@color/pure_white"
+                android:onClick="register"
+                android:textSize="16dp"
+                android:background="@color/green_button"
+
+
+                />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="vun.zisplay.activity.Dashboard">
+
+
+
+
+    <Button
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:id="@+id/settingsButton"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/CatalogButton"
+        android:layout_alignParentRight="true"
+        android:onClick="showSettings" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feed"
+
+        android:id="@+id/CatalogButton"
+        android:layout_alignParentLeft="true"
+        android:onClick="showCatalog" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conversations"
+        android:id="@+id/ChatButton"
+        android:layout_alignRight="@+id/CatalogButton"
+        android:layout_below="@+id/settingsButton"
+        android:layout_alignParentRight="true"
+
+        android:onClick="showChat" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Profile"
+        android:id="@+id/profile"
+        android:layout_below="@+id/ChatButton"
+        android:layout_alignParentRight="true"
+        android:onClick="showProfile" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Payments"
+        android:id="@+id/payment"
+        android:layout_below="@+id/CatalogButton"
+        android:layout_alignParentLeft="true"
+        android:onClick="showPayments" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Following"
+        android:id="@+id/followers"
+        android:layout_below="@+id/payment"
+        android:layout_alignParentLeft="true"
+        android:onClick="showFollowing" />
+    <Button
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loved"
+        android:id="@+id/lovedButton"
+        android:onClick="showLoved"
+        android:layout_below="@+id/profile"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

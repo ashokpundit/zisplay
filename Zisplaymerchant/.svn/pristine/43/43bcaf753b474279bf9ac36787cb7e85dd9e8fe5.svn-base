@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">@style/ButtonBar</item>
+        <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
+    </style>
+
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
+
+    <style name="ButtonBarButton" />
+    <style name="ZisplayTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <!--We will be using the toolbar so no need to show ActionBar-->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:fontFamily" ></item>
+        <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+        <!-- colorPrimary is used for the default action bar background -->
+
+
+    </style>
+
+    <style name="productEditText" >
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">#eeeeee</item>
+        <item name="colorControlHighlight">#adadad</item>
+    </style>
+
+    <style name="actionbar_title_text">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">#324157</item>
+        <!--<item name="android:paddingStart">15dp</item>-->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="tabActive">
+        <item name="android:textColor">@color/selected_tab_text</item>
+        <item name="android:background">@drawable/tablayout_heighlight</item>
+    </style>
+
+    <style name="tabDefault">
+        <item name="android:textColor">@color/catalogProductTextColor</item>
+
+    </style>
+
+</resources>

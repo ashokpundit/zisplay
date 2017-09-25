@@ -1,0 +1,486 @@
+package vun.zisplaymerchant.activity;
+
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+import com.nhaarman.listviewanimations.appearance.simple.ScaleInAnimationAdapter;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import it.sephiroth.android.library.picasso.Picasso;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import vun.zisplaymerchant.managers.ProductListManager;
+import vun.zisplaymerchant.network.RestClient;
+import vun.zisplaymerchant.utils.AppConstants;
+import vun.zisplaymerchant.R;
+import vun.zisplaymerchant.Zisplay;
+import vun.zisplaymerchant.managers.LocalData;
+import vun.zisplaymerchant.models.Product;
+import vun.zisplaymerchant.network.OMGServices;
+import vun.zisplaymerchant.utils.ImageDownloader;
+
+public class Catalog extends ZisplayBaseActivity implements AbsListView.OnScrollListener{
+    int startPos=0;
+    int endPos=0;
+    int offset=0;
+    int limit=10;
+
+    int selectedTab=0;
+    ProductListAdapter adapter;
+    ProductList pl = new ProductList();
+    ScaleInAnimationAdapter scaleAdapter;
+    ListView list_Product;
+
+    ProductListAdapter cla;
+    ProgressDialog pgdlg;
+
+    Toolbar toolbar;
+    LocalData localData=LocalData.getInstance();
+    OMGServices omgService= RestClient.getInstance().getApiService();
+    String noOfProduct="0";
+    ArrayList<Product> products;
+    boolean showingOldData=false;
+    boolean requestPending=false;
+    private String[] tabs = { "publish", "unPublish" };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        analytics(this.getClass().getName());
+        setContentView(R.layout.activity_catalog);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.canShowOverflowMenu();
+        if(AppConstants.merchantObj!=null)
+        noOfProduct=AppConstants.merchantObj.getNoOfProducts()+"";
+        setSupportActionBar(toolbar);
+        list_Product = (ListView) findViewById(R.id.lst_productList);
+        list_Product.setOnScrollListener(this);
+        adapter = new ProductListAdapter(this,new ProductList());
+        scaleAdapter=new ScaleInAnimationAdapter(adapter);
+        scaleAdapter.setAbsListView(list_Product);
+        list_Product.setAdapter(scaleAdapter);
+        cla = adapter;
+        products=ProductListManager.getInstance().getProductList(0);
+        if(products.size()!=0) {
+            pl.setProducts(products);
+            cla.gcl = pl;
+            cla.notifyDataSetChanged();
+            showingOldData=true;
+        }
+        loadCatalog(startPos,limit,selectedTab);
+    }
+
+    public void showPublished(View V)
+    {
+
+        LinearLayout tab=(LinearLayout)findViewById(R.id.productTabBlock1);
+        LinearLayout tab2=(LinearLayout)findViewById(R.id.productTabBlock2);
+        tab.setVisibility(View.VISIBLE);
+        tab2.setVisibility(View.GONE);
+        changeTab(0);
+
+    }
+
+    public void showUnpublished(View V)
+    {
+        LinearLayout tab=(LinearLayout)findViewById(R.id.productTabBlock1);
+        LinearLayout tab2=(LinearLayout)findViewById(R.id.productTabBlock2);
+        tab2.setVisibility(View.VISIBLE);
+        tab.setVisibility(View.GONE);
+        changeTab(1);
+    }
+    private void setActionBar()
+    {
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(this);
+        View mCustomView = mInflater.inflate(R.layout.action_bar_custom, null);
+        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setText("My Own Title");
+        ImageButton imageButton = (ImageButton) mCustomView
+                .findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Refresh Clicked!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+    }
+    void getProductCount()
+    {
+        HashMap productMap=new HashMap<String,String>();
+
+        productMap.put("filter[where][merchantId]",AppConstants.merchantId);
+        productMap.put("filter[where][isDeleted]",false);
+
+
+        omgService.getProductsCount(productMap, new Callback<JSONObject>() {
+            @Override
+            public void success(JSONObject productCount, Response response) {
+                System.out.println("product response " + productCount);
+                try {
+                    noOfProduct=productCount.getString("count");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                localData.saveData("totalProductCount",noOfProduct);
+                toolbar.setTitle(noOfProduct+" Products");
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("error " + error.getMessage());
+                if(pgdlg.isShowing())
+                    pgdlg.dismiss();
+            }
+
+        });
+    }
+
+    void changeTab(int nextTab)
+    {
+
+        showingOldData=true;
+       if(selectedTab==nextTab)
+           return;
+        selectedTab=nextTab;
+        products=ProductListManager.getInstance().getProductList(nextTab);
+        startPos=0;
+        endPos=startPos;
+        if(products==null||products.size()==0)
+        {
+            showingOldData=true;
+            loadCatalog(0,limit,nextTab);
+
+        }
+        else {
+            endPos=products.size();
+            pl.setProducts(products);
+            cla.gcl = pl;
+            cla.notifyDataSetChanged();
+        }
+    }
+    void loadCatalog(final int start,final int count,int type)
+    {
+        if(requestPending)
+            return;
+        requestPending=true;
+
+            pgdlg = ProgressDialog.show(this, "Please Wait", "Loading Products...", true);
+            HashMap productMap = new HashMap<String, String>();
+            productMap.put("filter[where][isDeleted]", false);
+            if(type==0)
+                productMap.put("filter[where][status]", "publish");
+            else if(type==1)
+                productMap.put("filter[where][status]", "unPublish");
+
+            productMap.put("filter[offset]",start);
+            productMap.put("filter[limit]",count);
+            productMap.put("filter[where][merchantId]", localData.getData("merchantId"));
+            omgService.getProducts(productMap, new Callback<ArrayList<Product>>() {
+                @Override
+                public void success(ArrayList<Product> productResponse, Response response) {
+                    requestPending=false;
+                    System.out.println("product response " + productResponse);
+                    if (pgdlg.isShowing())
+                        pgdlg.dismiss();
+
+                    if(pl.getCount()==0)
+                    {
+                        startPos=offset;
+                        endPos=offset+productResponse.size();
+                    }
+
+
+                    if(showingOldData)
+                    {
+                        pl.setProducts(productResponse);
+                        startPos=start;
+                        endPos=start+productResponse.size();
+                        showingOldData=false;
+
+                    }
+                    else {
+                        if (start < startPos) {
+                            startPos = startPos - productResponse.size();
+                            pl.addProducts(productResponse, false);
+                        } else  {
+                            pl.addProducts(productResponse, true);
+                            endPos = start + productResponse.size();
+                        }
+                    }
+                    cla.gcl = pl;
+                    cla.notifyDataSetChanged();
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    requestPending=false;
+                    System.out.println("error " + error.getMessage());
+                    if (pgdlg.isShowing())
+                        pgdlg.dismiss();
+                }
+
+            });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_catalog, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    int lastFirstVisibleItem=0;
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+        if(lastFirstVisibleItem==firstVisibleItem)
+            return;
+        lastFirstVisibleItem=firstVisibleItem;
+        if((totalItemCount-(firstVisibleItem+visibleItemCount))<visibleItemCount)
+        {
+            offset+=limit;
+            loadCatalog(endPos,limit,selectedTab);
+        }
+        else if(firstVisibleItem<startPos+limit && startPos>limit)
+        {
+            offset+=limit;
+            loadCatalog(startPos-limit, limit,selectedTab);
+        }
+    }
+    public void uploadProduct(View v)
+    {
+        Intent intent = new Intent(Catalog.this, NewProductActivity.class);
+        startActivity(intent);
+    }
+
+    class ProductList
+    {
+
+        private ArrayList<Product> products = new ArrayList<Product>();
+
+        public int getCount()
+        {
+            return this.products.size();
+        }
+        public void addProducts(ArrayList<Product> products,boolean insertInEnd)
+        {
+
+            if(!insertInEnd) {
+
+                this.products.addAll(0, products);
+                if(this.products.size()>50)
+                {
+                    for(int i=this.products.size()-1;i>50;i--)
+                    {
+                        this.products.remove(i);
+
+                    }
+                }
+
+            }
+            else {
+                this.products.addAll(products);
+                if(this.products.size()>50)
+                {
+                    for(int i=0;i<this.products.size()-50;i++)
+                    {
+                        this.products.remove(i);
+                    }
+                }
+            }
+            ProductListManager.getInstance().setProductList(this.products,selectedTab);
+        }
+        public void addProduct(Product c)
+        {
+            this.products.add(c);
+        }
+        public void removeProduct(Product c)
+        {
+            this.products.remove(c);
+        }
+        public void removeProduct(int id)
+        {
+            for(int i=0;i<this.getCount();i++)
+            {
+                if(id==Integer.parseInt(this.products.get(i).getId()))
+                {
+                    this.products.remove(this.products.get(i));
+                }
+            }
+        }
+    public Product getProduct(int id)
+    {
+        Product tmp=null;
+        for(int i=0;i<this.getCount();i++)
+        {
+            if(id==Integer.parseInt(this.products.get(i).getId()))
+            {
+                return this.products.get(i);
+            }
+        }
+        return tmp;
+    }
+    public ArrayList<Product> getProducts()
+    {
+        return products;
+    }
+    public void setProducts(ArrayList<Product> c)
+    {
+        this.products=c;
+        ProductListManager.getInstance().setProductList(this.products,selectedTab);
+    }
+
+}
+
+class ProductListAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeListener
+{
+    Context context;
+    ProductList gcl;
+    ProductList selectedContacts;
+    public ProductListAdapter(Context context,ProductList gcl)
+    {
+        super();
+        this.context = context;
+        this.gcl=gcl;
+        selectedContacts = new ProductList();
+
+    }
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
+        final Product product=gcl.getProducts().get(position);
+        LayoutInflater inflater = (LayoutInflater)    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view_row = inflater.inflate(R.layout.product_list_layout, parent,false);
+        ImageView img_product = (ImageView) view_row.findViewById(R.id.imageView);
+        TextView chk_contact = (TextView) view_row.findViewById(R.id.productTitleText);
+
+        String productTitle=product.getTitle();
+        if(productTitle.length()>25)
+            productTitle=productTitle.substring(0,22)+"...";
+
+        chk_contact.setText(productTitle );
+        TextView product_price = (TextView) view_row.findViewById(R.id.productPriceText);
+        product_price.setText(product.getPrice()+"");
+        RelativeLayout textSection = (RelativeLayout) view_row.findViewById(R.id.textView);
+
+        textSection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = product.getId();
+                Intent productViewIntent = new Intent(Catalog.this, ProductView.class);
+                productViewIntent.putExtra("productId", id);
+                startActivity(productViewIntent);
+            }
+        });
+        img_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = product.getId();
+                Intent productViewIntent = new Intent(Catalog.this, ProductView.class);
+                productViewIntent.putExtra("productId", id);
+                startActivity(productViewIntent);
+            }
+        });
+        String imageIds[]=product.getImages();
+        if(imageIds!=null && imageIds[0]!=null) {
+            String imagePath= AppConstants.CLOUDINARY_URL+"w_100,h_100/"+imageIds[0]+".jpg";
+            Picasso.with(Catalog.this).load(imagePath).into(img_product);
+
+//            ImageDownloader imgDownloader= new ImageDownloader();
+//            imgDownloader.download(imagePath,img_product);
+        }
+        return view_row;
+    }
+
+
+    @Override
+    public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+        Product t = gcl.getProduct(arg0.getId());
+        if(t!=null && arg1)
+        {
+            if(!alreadySelected(t))
+                selectedContacts.addProduct(t);
+        }
+        else if(!arg1 && t!=null)
+        {
+            selectedContacts.removeProduct(arg0.getId());
+        }
+    }
+    public boolean alreadySelected(Product t)
+    {
+        boolean ret = false;
+        if(selectedContacts.getProduct(Integer.parseInt(t.getId()))!=null)
+            ret=true;
+        return ret;
+    }
+    @Override
+    public int getCount() {
+        return gcl.getCount();
+    }
+    @Override
+    public Product getItem(int arg0) {
+        return gcl.getProducts().get(arg0);
+    }
+    @Override
+    public long getItemId(int arg0) {
+        return  arg0;
+    }
+}
+}

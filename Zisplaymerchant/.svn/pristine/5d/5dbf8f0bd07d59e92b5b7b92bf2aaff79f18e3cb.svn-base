@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="vun.zisplaymerchant.activity.FollowersList">
+    <include
+        layout="@layout/top_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+
+        />
+
+
+    <ListView
+        android:id="@+id/lst_followersList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/toolbar"
+        android:scrollbars="vertical"
+        android:divider="@null"
+
+
+
+        >
+
+    </ListView>
+
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateFollower"
+        android:textSize="14dp"
+        android:textColor="@color/pure_white"
+        android:background="@color/green_button"
+        android:text="INVITE FOLLOWERS +  "
+        android:layout_marginTop="14dp"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:onClick="inviteFollowers"
+
+        />
+
+</RelativeLayout>

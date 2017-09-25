@@ -1,0 +1,308 @@
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pure_white"
+    tools:context="vun.zisplaymerchant.activity.Profile">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:minHeight="?attr/actionBarSize"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+        </android.support.v7.widget.Toolbar>
+
+
+
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/coverImageBlock"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/testbanner2"
+                android:id="@+id/coverImage"
+                android:adjustViewBounds="true"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/coverImageButton"
+                android:text="CHANGE COVER IMAGE"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="16dp"
+                android:background="#cc000000"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/pure_white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:onClick="startCamera"
+                />
+        </FrameLayout>
+        <LinearLayout
+            android:layout_below="@+id/coverImageBlock"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/userInfoBlock"
+            android:paddingLeft="16dp"
+            android:orientation="vertical"
+            android:paddingRight="16dp"
+            android:background="@color/green_button"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/uniqueUsername"
+                android:text="Your Unique @handle"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/pure_white"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="#51ffbf"
+                android:layout_height="wrap_content"
+                android:text="Zisplay url where your followers can find you"
+                />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:id="@+id/merchantUrl"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/pure_white"
+                android:textSize="25dp"
+                android:text="Zisplay.com/eclectiques"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registered Number"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/pure_white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Used for app access and customer inquieres"
+                android:paddingTop="10dp"
+                android:textSize="16dp"
+                android:textColor="#51ffbf"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/pure_white"
+                android:textSize="20dp"
+                android:text="9971751126"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/merchantMobile"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/userInfoBlock"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:id="@+id/storeTitleRow"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Store Title"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/catalogProductTextColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name that appears on your creator page"
+                android:textColor="#bac2d0"
+                android:textSize="16dp"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/storeTitleBlock"
+                    >
+
+
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:id="@+id/storeTitleEdit"
+                        android:textSize="20dp"
+                        android:textColor="@color/catalogProductTextColor"
+
+                        />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/storeTitleEditButton"
+                        android:src="@drawable/edit"
+                        android:layout_alignParentRight="true"
+
+
+                        />
+
+
+                </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/storeTitleRow"
+            android:id="@+id/storeLocationRow"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Store Location"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/catalogProductTextColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Help Your Nearby customers find you"
+                android:textColor="#bac2d0"
+                android:textSize="16dp"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/storeLocationBlock"
+                    >
+
+
+
+                    <AutoCompleteTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:id="@+id/storeLocationeEdit"
+                        android:textSize="20dp"
+                        android:text="Sector 30, Gurgaon"
+                        android:textColor="@color/catalogProductTextColor"
+                        />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/storeLocationEditButton"
+                    android:src="@drawable/edit"
+                    android:layout_alignParentRight="true"
+                    android:onClick="editLocation"
+                        />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/storeLocationRow"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/catalogProductTextColor"
+                android:text="Social Connections"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Add your social channels for streamlined sharing. your social links are also promoted to your audience to increase reach"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

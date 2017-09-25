@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="vun.zisplaymerchant"
+    android:versionCode="1"
+    android:versionName="Warmup" >
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <permission
+        android:name="vun.zisplaymerchant.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="vun.zisplaymerchant.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--
+ The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".Zisplay"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/ZisplayTheme" >
+
+        <!-- ActiveRecord -->
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="zisplaymerchant" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+
+        <!-- Aviary -->
+        <provider
+            android:name="com.aviary.android.feather.sdk.internal.cds.AviaryCdsProvider"
+            android:authorities="vun.zisplaymerchant.AviaryCdsProvider"
+            android:exported="false"
+            android:process=":aviary_cds" />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name=".activity.SMSConfirmationActivity"
+            android:label="@string/title_activity_smsconfirmation" >
+        </activity>
+        <activity
+            android:name=".activity.SharingOptionListActivity"
+            android:label="@string/title_sharingoption_list" >
+        </activity>
+        <activity
+            android:name=".activity.SharingOptionDetailActivity"
+            android:label="@string/title_sharingoption_detail"
+            android:parentActivityName=".activity.SharingOptionListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.SharingOptionListActivity" />
+        </activity>
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="c5d20ea0dcdccb746dff8b1288841ffa55b6bba0" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- <service android:name="com.appsee.AppseeBackgroundUploader" /> -->
+
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".activity.RegistrationActivity"
+            android:label="@string/title_activity_registration" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAvdqo6KGBHx0LVAlWhPeAO84Pu8zfVSUk" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".activity.LocationPickActivity"
+            android:label="@string/title_activity_location_pick" >
+        </activity>
+
+
+        <receiver
+            android:name="vun.zisplaymerchant.managers.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="vun.zisplaymerchant" />
+            </intent-filter>
+        </receiver>
+        <service android:name="vun.zisplaymerchant.managers.GcmMessageHandler" />
+        <!-- Used for MixPanel Play Store Campaign Measurement -->
+        <receiver
+            android:name="com.mixpanel.android.mpmetrics.InstallReferrerReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Used for Google Play Store Campaign Measurement -->
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
+        <receiver
+            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.mixpanel.android.mpmetrics.GCMReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="vun.zisplaymerchant" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Used for Google crash reporting -->
+        <!-- <bool name="ga_reportUncaughtExceptions" > -->
+        <!-- true -->
+        <!-- </bool> -->
+
+
+        <!-- <int name="ga_dispatchPeriod" > -->
+        <!-- 5 -->
+        <!-- </int> -->
+
+        <activity
+            android:name=".activity.MerchantRegistrationActivity"
+            android:label="@string/title_activity_merchant_registration" >
+        </activity>
+        <activity
+            android:name=".activity.MapsActivity"
+            android:label="@string/title_activity_maps" >
+        </activity>
+        <activity
+            android:name=".activity.Dashboard"
+            android:label="@string/title_activity_dashbaord" >
+        </activity>
+        <activity
+            android:name=".activity.NewProductActivity"
+            android:label="@string/title_activity_new_product" >
+        </activity>
+        <activity
+            android:name=".activity.Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".activity.Catalog"
+            android:label="@string/title_activity_catalog" >
+        </activity>
+        <activity
+            android:name=".activity.InviteFollowers"
+            android:label="@string/title_activity_invite_followers" >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/title_facebook_login" >
+        </activity>
+        <activity
+            android:name=".activity.InviteBySMS"
+            android:label="@string/title_activity_invite_by_sms" >
+        </activity>
+        <activity
+            android:name=".activity.ChatHistory"
+            android:label="@string/title_activity_chat_history" >
+        </activity>
+        <activity
+            android:name=".activity.ConversastionList"
+            android:label="@string/title_activity_conversastion_list" >
+        </activity>
+        <activity
+            android:name=".activity.ProductEdit"
+            android:label="@string/title_activity_product_edit" >
+        </activity>
+        <activity
+            android:name=".activity.Profile"
+            android:label="@string/title_activity_merchant_profile" >
+        </activity>
+        <activity
+            android:name=".activity.UserProfile"
+            android:label="@string/title_activity_user_profile" >
+        </activity>
+        <activity
+            android:name=".activity.MerchantProfile"
+            android:label="@string/title_activity_merchant_profile" >
+        </activity>
+        <activity
+            android:name=".activity.FollowersList"
+            android:label="@string/title_activity_followers_list" >
+        </activity>
+        <activity
+            android:name=".activity.PaymentList"
+            android:label="@string/title_activity_payment_list" >
+        </activity>
+        <activity
+            android:name=".activity.PaymentLink"
+            android:label="@string/title_activity_payment_link" >
+        </activity>
+        <activity
+            android:name=".activity.FullScreenViewActivity"
+            android:label="@string/title_activity_full_screen_view" >
+        </activity>
+        <activity
+            android:name=".activity.ProductView"
+            android:label="@string/title_activity_product_view" >
+        </activity>
+        <activity
+            android:name=".activity.SocialChannels"
+            android:label="@string/title_activity_social_channels" >
+        </activity>
+        <activity
+            android:name=".activity.Dashboard2"
+            android:label="@string/title_activity_dashboard2" >
+        </activity>
+        <!-- <activity -->
+        <!-- android:name=".activity.UserFollowerList" -->
+        <!-- android:label="@string/title_activity_user_follower_list" > -->
+        <!-- </activity> -->
+        <activity
+            android:name=".activity.Registration2"
+            android:label="@string/title_activity_registration2" >
+
+        </activity>
+        <activity
+            android:name=".activity.digit_sample"
+            android:label="@string/title_activity_digit_sample" >
+        </activity>
+        <service android:name="com.parse.PushService" />
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.parse.ParsePushBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <!--
+                  IMPORTANT: Change "com.parse.starter" to match your app's package name.
+                -->
+                <category android:name="vun.zisplaymerchant" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

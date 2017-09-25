@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/followers_text"
+        android:textColor="@color/pure_white"
+        android:textSize="20dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="16dp"
+        android:background="@color/green_button"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:id="@+id/inviteWhatsapp"
+        android:onClick="inviteWhatsApp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invite by Whatsapp"
+            android:textColor="@color/catalogProductTextColor"
+            android:textSize="13dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="16dp"
+
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/social_whatsapp"
+            android:layout_alignParentRight="true"
+
+            />
+        </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:id="@+id/inviteFacebook"
+        android:onClick="inviteFacebook"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invite by Facebook"
+            android:textColor="@color/catalogProductTextColor"
+            android:textSize="13dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="16dp"
+
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/social_facebook"
+            android:layout_alignParentRight="true"
+
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:id="@+id/inviteSMS"
+        android:onClick="inviteSMS"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invite by SMS"
+            android:textColor="@color/catalogProductTextColor"
+            android:textSize="13dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="16dp"
+
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/messages"
+            android:layout_alignParentRight="true"
+
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pure_white"
+        android:id="@+id/inviteEmail"
+        android:onClick="inviteGMail"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invite by Email"
+            android:textColor="@color/catalogProductTextColor"
+            android:textSize="13dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="16dp"
+
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/social_email"
+            android:layout_alignParentRight="true"
+
+            />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/green_button"
+        android:text="DONE"
+        android:textColor="@color/pure_white"
+        android:textSize="14dp"
+        android:layout_marginTop="20dp"
+        android:onClick="hideDialog"
+
+        />
+
+</LinearLayout>
